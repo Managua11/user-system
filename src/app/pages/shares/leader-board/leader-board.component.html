@@ -1,0 +1,29 @@
+<p class="text-center font-bold m-2">{{title}}</p>
+@if (leaderboard && leaderboard.length) {
+<p-table [value]="leaderboard | filterByWeek : filter" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template #caption>
+    <div class="flex gap-2">
+      @for(week of weeks; track week){
+      <p-button (click)="filter = week" [severity]="week === filter ? 'success' : 'info'" [label]="week" />
+      }
+    </div>
+  </ng-template>
+  <ng-template #header>
+    <tr>
+      @for (header of headers; track header) {
+      <th>{{ header }}</th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template #body let-item>
+    <tr>
+      <td>{{ item.customerId }}</td>
+      <td>{{ item.loginName }}</td>
+      <td>{{ item.place }}</td>
+      <td>{{ item.week }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+}@else {
+<span class="text-gray-300 text-12">Data not found</span>
+}

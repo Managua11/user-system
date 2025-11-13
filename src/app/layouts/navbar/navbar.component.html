@@ -1,0 +1,7 @@
+<div class="w-full flex justify-start px-4 py-2 gap-4">
+  @for (navItem of navItems; track navItem.route) {
+  <a class="text-gray-300 hover:text-white" [routerLink]="navItem.route" routerLinkActive="text-white underline">
+    <span>{{ navItem.label }}</span>
+  </a>
+  }
+</div>

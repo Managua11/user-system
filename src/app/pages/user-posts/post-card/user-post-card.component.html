@@ -1,0 +1,9 @@
+@if (post)
+{
+<div class="flex items-stretch justify-center">
+  <p-card [style]="{ width: '20rem', overflow: 'hidden' }">
+    <ng-template #title> {{ post.title }} </ng-template>
+    <ng-template #subtitle>{{post.body}} </ng-template>
+  </p-card>
+</div>
+}

@@ -1,0 +1,26 @@
+<div class="p-4">
+  <p-table [value]="(posts$ | async) || []" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+      <tr>
+        @for (header of headers; track header) {
+        <th>{{ header }}</th>
+        }
+      </tr>
+    </ng-template>
+    <ng-template #body let-post>
+      <tr>
+        <td>{{ post.userName }}</td>
+        <td>{{ post.title }}</td>
+        <td>
+          <p-button (click)="openModalFn(post)" severity="success" label="Details" />
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+@if(openModal && activePost){
+<app-modal (onClose)="openModal = false">
+  <app-post-details-card [post]="activePost" (onClose)="closeModalFn()" />
+</app-modal>
+}

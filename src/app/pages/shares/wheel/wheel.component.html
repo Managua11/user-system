@@ -1,0 +1,44 @@
+<div class="flex flex-col items-center gap-4 text-white">
+  <div class="relative w-72 h-72">
+    <div class="absolute top-1/2 right-[-8px] -translate-y-1/2 translate-x-1/2
+                 border-l-[18px] border-l-white border-y-[10px] border-y-transparent"
+      [style.transform]="'rotate(180deg)'"></div>
+
+    <div class="absolute inset-0 rounded-full transition-transform duration-[2000ms] ease-out"
+      [style.transform]="'rotate(' + rotation + 'deg)'">
+      <svg viewBox="0 0 200 200" class="w-full h-full">
+        <ng-container *ngFor="let i of [].constructor(10); let idx = index">
+          <path [attr.d]="
+              'M100 100 L' +
+              (100 + 90 * Math.cos((idx * 36) * Math.PI / 180)) +
+              ' ' +
+              (100 + 90 * Math.sin((idx * 36) * Math.PI / 180)) +
+              ' A90 90 0 0 1 ' +
+              (100 + 90 * Math.cos(((idx + 1) * 36) * Math.PI / 180)) +
+              ' ' +
+              (100 + 90 * Math.sin(((idx + 1) * 36) * Math.PI / 180)) +
+              ' Z'
+            " [attr.fill]="
+              ['#257D6C','#3AA5FD','#6744AD','#F5990E','#EB242D',
+               '#39A590','#004CD6','#B09CD8','#F7D247','#CE0E2D'][idx]
+            "></path>
+
+          <text [attr.x]="100 + 60 * Math.cos(((idx * 36) + 18) * Math.PI / 180)"
+            [attr.y]="100 + 60 * Math.sin(((idx * 36) + 18) * Math.PI / 180)" text-anchor="middle"
+            dominant-baseline="middle" class="fill-white text-sm font-bold">
+            {{ idx + 1 }}
+          </text>
+        </ng-container>
+      </svg>
+    </div>
+  </div>
+
+  <div class="flex gap-2">
+    <input (keydown.enter)="spin()" type="number" [(ngModel)]="pick" min="1" max="10"
+      class="w-20 rounded-md bg-gray-800 px-2 py-1 text-center text-white" />
+
+    <p-button (click)="spin()" severity="info" label="Spin" />
+  </div>
+</div>
+
+<p-toast />

@@ -1,0 +1,7 @@
+@if(posts$ | async; as posts){
+<div class="p-4 flex flex-wrap justify-center gap-4">
+  @for(post of posts; track post.id) {
+  <app-post-card [post]="post" />
+  }
+</div>
+}
