@@ -1,6 +1,6 @@
 # UserSystem
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10. I used node v - v20.16.0. This is a simple user management application developed using Tailwind CSS and PrimeNG.
 
 ## Development server
 
